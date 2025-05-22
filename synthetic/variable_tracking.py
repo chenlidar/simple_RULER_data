@@ -31,7 +31,7 @@ import numpy as np
 import heapq
 import json
 import logging
-import pandas as pd
+from synthetic.utils import write_manifest
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -246,9 +246,6 @@ def sys_vartrack_w_noise_random(num_samples: int, max_seq_length: int, increment
 
 
 def main():   
-    save_file = args.save_dir / f'{args.save_name}' / f'{args.subset}.jsonl'
-    save_file.parent.mkdir(parents=True, exist_ok=True)
-
     icl_example = sys_vartrack_w_noise_random(num_samples=1, 
                                               max_seq_length=500, 
                                               incremental=5,
@@ -261,7 +258,7 @@ def main():
                                               num_hops=args.num_hops,
                                               icl_example=icl_example)
     
-    pd.DataFrame(write_jsons).to_json(save_file, orient="records", lines=True, force_ascii=True)
+    write_manifest(write_jsons,args.save_dir,args.max_seq_length)
 
 if __name__=="__main__":
     main()

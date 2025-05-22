@@ -31,12 +31,11 @@ MODEL_TEMPLATE_TYPE='base'
 NUM_SAMPLES=200
 TOKENIZER_PATH=''
 
-for MAX_SEQ_LENGTH in "${SEQ_LENGTHS[@]}"; do
-    
-    DATA_DIR="${ROOT_PATH}/${BENCHMARK}/${MODEL_NAME}/${MAX_SEQ_LENGTH}/data"
+for TASK in "${TASKS[@]}"; do
+    DATA_DIR="${ROOT_PATH}/${BENCHMARK}/${MODEL_NAME}/${TASK}/data"
     mkdir -p ${DATA_DIR}
     
-    for TASK in "${TASKS[@]}"; do
+    for MAX_SEQ_LENGTH in "${SEQ_LENGTHS[@]}"; do
         python prepare.py \
             --save_dir ${DATA_DIR} \
             --benchmark ${BENCHMARK} \

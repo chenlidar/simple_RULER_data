@@ -19,7 +19,8 @@ dependencies = [
     "tiktoken (>=0.9.0,<0.10.0)",
     "google-generativeai (>=0.8.5,<0.9.0)",
     "transformers (>=4.52.2,<5.0.0)",
-    "importlib (>=1.0.4,<2.0.0)"
+    "importlib (>=1.0.4,<2.0.0)",
+    "pyarrow (>=20.0.0,<21.0.0)"
 ]
 
 

@@ -26,7 +26,7 @@ sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 from tokenizer import select_tokenizer
 from scipy.special import zeta 
 import logging
-import pandas as pd
+from synthetic.utils import write_manifest
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -134,13 +134,10 @@ def sys_kwext(num_samples: int, max_seq_length: int, incremental: int = 10):
 
 
 def main():   
-    save_file = args.save_dir / f'{args.save_name}' / f'{args.subset}.jsonl'
-    save_file.parent.mkdir(parents=True, exist_ok=True)
     write_jsons = sys_kwext(num_samples=args.num_samples, max_seq_length=args.max_seq_length, 
                             incremental=10)
     
-    pd.DataFrame(write_jsons).to_json(save_file, orient="records", lines=True, force_ascii=True)
-
+    write_manifest(write_jsons,args.save_dir,args.max_seq_length)
 
 if __name__=="__main__":
     main()
