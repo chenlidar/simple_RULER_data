@@ -3,25 +3,9 @@ SEQ_LENGTHS=(
     2048
     4096
     8192
-    16384
-    32768
-    65536
-    131072
 )
 TASKS=(
-    "niah_single_1"
-    "niah_single_2"
-    "niah_single_3"
-    "niah_multikey_1"
-    "niah_multikey_2"
-    "niah_multikey_3"
-    "niah_multivalue"
-    "niah_multiquery"
-    "vt"
     "cwe"
-    "fwe"
-    "qa_1"
-    "qa_2"
 )
 ROOT_PATH='RULER'
 BENCHMARK='synthetic'
@@ -47,3 +31,4 @@ for TASK in "${TASKS[@]}"; do
             --num_samples ${NUM_SAMPLES}
     done
 done
+wait
