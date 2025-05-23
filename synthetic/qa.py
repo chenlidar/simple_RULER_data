@@ -99,9 +99,9 @@ def read_hotpotqa(file):
 
 DOCUMENT_PROMPT = "Document {i}:\n{document}"
 if args.dataset == 'squad':
-    QAS, DOCS = read_squad(os.path.join(os.path.dirname(os.path.abspath(__file__)), "json/squad.json"))
+    QAS, DOCS = read_squad(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data/squad.json"))
 elif args.dataset == 'hotpotqa':
-    QAS, DOCS = read_hotpotqa(os.path.join(os.path.dirname(os.path.abspath(__file__)), "json/hotpotqa.json"))
+    QAS, DOCS = read_hotpotqa(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data/hotpotqa.json"))
 else:
     raise NotImplementedError(f'{args.dataset} is not implemented.')
 
